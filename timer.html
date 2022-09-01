@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Google fonts preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Bootstrap css  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+        /* Css Variables */
+        :root{
+            --primary-color: #00A45D;
+            --primary-light: #E5F6EE;
+            --title-color: #01331D;
+            --primary-dark: #008E51;
+        }
+        /* Reset styles */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            padding: 0;
+            margin-bottom: 0;
+        }
+        li{
+            list-style-type: none;
+        }
+        /* Body styles */
+        body{
+            font-family: 'Poppins', sans-serif;
+        }
+        /* Written styles */
+        .timer{
+            height: 100vh;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+        .timer .logo{
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: #eee;
+            border-radius: 50%;
+            padding: 20px;
+        }
+        .timer .content-wrapper .left h1{
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 60px;
+            margin-top: 25px;
+            color: var(--title-color);
+            margin-bottom: 20px;
+        }
+        .timer .content-wrapper .left .info-pill{
+            display: inline-block;
+            border-radius: 30px;
+            border: 2px solid var(--primary-color);
+            font-size: 16px;
+            background: var(--primary-light);
+            padding: 10px 20px;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 35px;
+        }
+        .timer .content-wrapper .left .exams-wrapper .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .timer .content-wrapper .left .exams-wrapper .title h5{
+            font-size: 20px;
+            font-weight: 700;
+        }
+        .timer .content-wrapper .left .exams-wrapper .title a{
+            height: 45px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: 200ms ease-in-out;
+        }
+        .timer .content-wrapper .left .exams-wrapper .title a:hover{
+            background: var(--primary-dark);
+        }
+        .timer .content-wrapper .left .exams-wrapper .exams{
+            height: 400px;
+            overflow-y: auto;
+            padding-right: 25px;
+            padding-bottom: 20px;
+        }
+        .timer .content-wrapper .left .exams-wrapper .exams::-webkit-scrollbar{
+            width: 5px;
+            border-radius: 8px;
+        }
+        .timer .content-wrapper .left .exams-wrapper .exams::-webkit-scrollbar-track{
+            background: #EEEEEE;
+        }
+        .timer .content-wrapper .left .exams-wrapper .exams::-webkit-scrollbar-thumb{
+            background: var(--primary-color);
+            border-radius: 8px;
+        }
+        .timer .content-wrapper .left .exams-wrapper .exams .exam-single{
+            border: 2px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .timer .content-wrapper .left .exams-wrapper .exams .exam-single h5{
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .timer .content-wrapper .left .exams-wrapper .exams .exam-single ul li{
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--primary-color);
+            padding: 10px 0;
+            font-weight: 500;
+            color: #555;
+        }
+        .timer .content-wrapper .left .exams-wrapper .exams .exam-single ul li:last-child{
+            padding-bottom: 0;
+        }
+        .timer .content-wrapper .right{
+            text-align: center;
+        }
+        .timer .content-wrapper .right .title{
+            text-align: center;
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .timer .content-wrapper .right .timer-wrapper{
+            padding: 0 60px;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .timer .content-wrapper .right .timer-wrapper .timer-single{
+            font-size: 100px;
+            font-weight: 700;
+            background-color: var(--primary-color);
+            flex-grow: 1;
+            padding: 30px 0;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            flex-basis: calc(100% / 3);
+            position: relative;
+        }
+        .timer .content-wrapper .right .timer-wrapper .timer-single::after{
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            top: 10px;
+            left: 0;
+            background-color: var(--primary-dark);
+            z-index: -1;
+            border-radius: 20px;
+        }
+        .timer .content-wrapper .right .timer-wrapper .timer-single span{
+            font-size: 30px;
+            font-weight: 500;
+        }
+        .timer .content-wrapper .right a.start-btn{
+            display: inline-block;
+            padding: 18px 70px;
+            margin-top: 50px;
+            background-color: #2A72EF;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 30px;
+            transition: 200ms ease-in-out;
+            margin-bottom: 50px;
+        }
+        .timer .content-wrapper .right a.start-btn:hover{
+            background-color: #034BC6;
+        }
+        .timer .content-wrapper .right .current-time{
+            padding: 30px 60px;
+            display: inline-block;
+            border: 2px solid var(--primary-color);
+            border-radius: 20px;
+        }
+        .timer .content-wrapper .right .current-time h5{
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--title-color);
+        }
+        .timer .content-wrapper .right .current-time h3{
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 0;
+            color: #555;
+        }
+        .timer .content-wrapper .footer{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin-bottom: 35px;
+        }
+        .timer .content-wrapper .footer p{
+            margin-bottom: 0;
+        }
+        @media(max-width: 1400px){
+            .timer{
+                padding-top: 30px;
+            }
+            .timer .logo{
+                width: 80px;
+                height: 80px;
+            }
+            .timer .content-wrapper .left h1{
+                font-size: 30px;
+                line-height: 40px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+            .timer .content-wrapper .left .info-pill{
+                margin-bottom: 20px;
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+            .timer .content-wrapper .left .exams-wrapper .title{
+                margin-bottom: 10px;
+            }
+            .timer .content-wrapper .left .exams-wrapper .title h5{
+                font-size: 18px;
+            }
+            .timer .content-wrapper .left .exams-wrapper .title a{
+                font-size: 14px;
+                padding: 0 20px;
+                height: 40px;
+            }
+            .timer .content-wrapper .left .exams-wrapper .exams{
+                padding-right: 15px;
+                height: 365px;
+            }
+            .timer .content-wrapper .left .exams-wrapper .exams .exam-single{
+                padding: 20spx;
+            }
+            .timer .content-wrapper .left .exams-wrapper .exams .exam-single h5{
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            .timer .content-wrapper .left .exams-wrapper .exams .exam-single ul li{
+                font-size: 13px;
+                padding: 5px 0;
+            }
+            .timer .content-wrapper .right .title{
+                font-size: 25px;
+                margin-bottom: 20px;
+            }
+            .timer .content-wrapper .right .timer-wrapper .timer-single{
+                font-size: 70px;
+            }
+            .timer .content-wrapper .right .timer-wrapper .timer-single span{
+                font-size: 25px;
+            }
+            .timer .content-wrapper .right a.start-btn{
+                margin-top: 35px;
+                margin-bottom: 35px;
+                font-size: 16px;
+                padding: 15px 60px;
+            }
+            .timer .content-wrapper .right .current-time{
+                padding: 30px 50px;
+            }
+            .timer .content-wrapper .right .current-time h5{
+                font-size: 18px;
+            }
+            .timer .content-wrapper .right .current-time h3{
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="timer">
+        <div class="container">
+
+            <!-- Logo  -->
+            <a href="#" class="logo"><img src="./bup-logo.png" class="img-fluid" alt=""></a>
+            <!-- Logo -->
+
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="left">
+                            <h1>Bangladesh university <br>of professionals</h1>
+                            <div class="info-pill">Exam Hall Dashboard</div>
+                            <div class="exams-wrapper">
+                                <div class="title">
+                                    <h5>Exam/s</h5>
+                                    <a href="#">Add Exam</a>
+                                </div>
+                                <div class="exams">
+                                    <div class="exam-single">
+                                        <h5>Information theory and coding</h5>
+                                        <ul>
+                                            <li><span>Course Code</span><span>MICT-2021</span></li>
+                                            <li><span>Time</span><span>2h 30min</span></li>
+                                            <li><span>Total Students</span><span>50</span></li>
+                                            <li><span>Present</span><span>20</span></li>
+                                            <li><span>Absent</span><span>10</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="exam-single">
+                                        <h5>Information theory and coding</h5>
+                                        <ul>
+                                            <li><span>Course Code</span><span>MICT-2021</span></li>
+                                            <li><span>Time</span><span>2h 30min</span></li>
+                                            <li><span>Total Students</span><span>50</span></li>
+                                            <li><span>Present</span><span>20</span></li>
+                                            <li><span>Absent</span><span>10</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 position-relative">
+                        <div class="right">
+                            <h4 class="title">Remaining Time</h4>
+                            <div class="timer-wrapper">
+                                <div class="timer-single">
+                                    3<span>h</span>
+                                </div>
+                                <div class="timer-single">
+                                    20<span>m</span>
+                                </div>
+                                <div class="timer-single">
+                                    10<span>s</span>
+                                </div>
+                            </div>
+                            <a href="#" class="start-btn">Start</a>
+                            <div>
+                                <div class="current-time">
+                                    <h5>Current Time & Date</h5>
+                                    <h3>15 jun 2022, 10:20pm</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <p>Gifted by <a href="#">mekvision.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content wrapper -->
+
+        </div>
+    </section>
+</body>
+</html>
