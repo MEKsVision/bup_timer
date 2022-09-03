@@ -24,9 +24,9 @@ var app = new Vue({
 	},
     methods: {
         getCurrentTime(){
+            this.current_time = moment(new Date()).format('DD MMM YYYY, hh:mm:ss a');
             setInterval(()=>{
-                const d = new Date();
-                this.current_time = moment(d).format('DD MMM YYYY, hh:mm:ss a');
+                this.current_time = moment(new Date()).format('DD MMM YYYY, hh:mm:ss a');
                 // console.log(this.exam_started_at);
             },1000)
             return this.current_time;
