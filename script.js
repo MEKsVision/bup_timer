@@ -5,9 +5,9 @@ var app = new Vue({
         months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
         exam_started_at:"",
         exam_ending_time:"",
-        duration_h:1,
+        duration_h:0,
         duration_m:0,
-        duration_s:20,
+        duration_s:0,
         diffTime: 0,
         duration:0,
         interval:1000,
@@ -59,6 +59,8 @@ var app = new Vue({
                         this.duration_s = this.duration.seconds()
                         this.duration_m = this.duration.minutes()
                         this.duration_h = this.duration.hours()
+                    }else{
+                        this.stopInterval();
                     }
                 },1000)
             }
