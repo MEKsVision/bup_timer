@@ -11,8 +11,19 @@ var app = new Vue({
         diffTime: 0,
         duration:0,
         interval:1000,
-
-
+        timer_interval_object:null,
+        exam_info:{
+            title:"Enter the exam title here e.g. Final examination 2022",
+            exams:[
+                {
+                    course_name:"Example Course",
+                    course_code:"MICT-2203",
+                    time: "2h 30 mins",
+                    total_student: 55,
+                    present:35,
+                }
+            ]
+        }
     },
     created:function(){
         
@@ -40,15 +51,21 @@ var app = new Vue({
 
             // console.log("Exam Current time: ",this.exam_started_at.format('DD MMM YYYY, hh:mm:ss a'));
             // console.log("Exam Future time: ",futureTime.format('DD MMM YYYY, hh:mm:ss a'));
-            setInterval(()=>{
-                if(this.duration>0){
-                    this.duration = moment.duration(this.duration - this.interval, 'milliseconds');
-                    // console.log(this.duration.hours() + ":" + this.duration.minutes() + ":" + this.duration.seconds());
-                    this.duration_s = this.duration.seconds()
-                    this.duration_m = this.duration.minutes()
-                    this.duration_h = this.duration.hours()
-                }
-            },1000)
+            if(this.timer_interval_object==null){
+                this.timer_interval_object = setInterval(()=>{
+                    if(this.duration>0){
+                        this.duration = moment.duration(this.duration - this.interval, 'milliseconds');
+                        // console.log(this.duration.hours() + ":" + this.duration.minutes() + ":" + this.duration.seconds());
+                        this.duration_s = this.duration.seconds()
+                        this.duration_m = this.duration.minutes()
+                        this.duration_h = this.duration.hours()
+                    }
+                },1000)
+            }
+        },
+        stopInterval(){
+            clearInterval(this.timer_interval_object)
+            this.timer_interval_object = null
         }
     },
 })

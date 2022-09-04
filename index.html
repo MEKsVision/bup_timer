@@ -19,8 +19,10 @@
         <div class="container">
             <div class="header">
                 <!-- Logo  -->
-                <a href="#" class="logo"><img src="./bup-logo.png" class="img-fluid" alt=""></a>
-                <h1>Bangladesh University of Professionals</h1>
+                <div>
+                    <a href="#" class="logo"><img src="./bup-logo.png" class="img-fluid" alt=""></a>
+                    <h1>Bangladesh University of Professionals</h1>
+                </div>
 
                 <div class="info-pill">Exam Hall Dashboard</div>
                 <!-- Logo -->
@@ -72,7 +74,13 @@
                     </div>
                     <div class="col-lg-9 position-relative">
                         <div class="right">
-                            <h4 class="title">Remaining Time</h4>
+                            <div class="control-box">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" @click.prevent="stopInterval()" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#titleAndTimerModal">Set Time & Title</button>
+                                  </div>
+                            </div>
+                            <h4 class="title">{{exam_info.title}}</h4>
+                            <p>Remaining Time:</p>
                             <div class="timer-wrapper">
                                 <div class="timer-single">
                                     {{ duration_h }}<span>h</span>
@@ -96,6 +104,42 @@
                             <p>Gifted by <a href="http://meksvision.com/">mekvision.com</a></p>
                         </div>
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="titleAndTimerModal" tabindex="-1" aria-labelledby="titleAndTimerModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="titleAndTimerModalLabel">Set Time and Title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Exam Title</span>
+                                        <textarea class="form-control" v-model="exam_info.title" aria-label="With textarea"></textarea>
+                                    </div>
+
+                                    <div class="input-group">
+                                        <span class="input-group-text">H:</span>
+                                        <input type="number" v-model="duration_h" aria-label="Hour" class="form-control">
+                                        <span class="input-group-text">M:</span>
+                                        <input type="number" v-model="duration_m" aria-label="Minute" class="form-control">
+                                        <span class="input-group-text">S:</span>
+                                        <input type="number" v-model="duration_s" aria-label="Second" class="form-control">
+                                      </div>
+<!-- 
+                                    <input type="number" placeholder="hours" v-model="duration_h" name="" id="">
+                                    <input type="number" placeholder="minutes" v-model="duration_m" name="" id="">
+                                    <input type="number" placeholder="seconds" v-model="duration_s" name="" id=""> -->
+                                </div>
+                                <div class="modal-footer">
+                                    <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- Content wrapper -->
