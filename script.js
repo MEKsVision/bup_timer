@@ -14,15 +14,14 @@ var app = new Vue({
         timer_interval_object:null,
         exam_info:{
             title:"Enter the exam title here e.g. Final examination 2022",
-            exams:[
-                {
-                    course_name:"Example Course",
-                    course_code:"MICT-2203",
-                    time: "2h 30 mins",
-                    total_student: 55,
-                    present:35,
-                }
-            ]
+            exams:[]
+        },
+        single_exam:{
+            course_title:"",
+            course_code:"",
+            time: "",
+            total_student: "",
+            present:"",
         }
     },
     created:function(){
@@ -63,11 +62,32 @@ var app = new Vue({
                         this.stopInterval();
                     }
                 },1000)
+            }else{
+                this.stopInterval();
             }
         },
         stopInterval(){
             clearInterval(this.timer_interval_object)
             this.timer_interval_object = null
+        },
+        addExam(){
+            this.exam_info.exams.push(this.single_exam);
+            this.single_exam = {
+                course_title:"",
+                course_code:"",
+                time: "",
+                total_student: "",
+                present:"",
+            }
+        },
+        removeExam(index){
+            this.exam_info.exams.splice(index, 1); // 2nd parameter means remove one item only
+        },
+        editExam(index){
+            this.single_exam = this.exam_info.exams[index]
+        },
+        updateExam(index){
+            console.log(index);
         }
     },
 })
