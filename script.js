@@ -8,6 +8,7 @@ var app = new Vue({
         duration_h:0,
         duration_m:0,
         duration_s:0,
+        exam_duration:"",
         diffTime: 0,
         duration:0,
         interval:1000,
@@ -25,9 +26,13 @@ var app = new Vue({
         }
     },
     created:function(){
-        
+        window.onbeforeunload = function(){
+            return "Are you sure to leave timer?";
+        }
     },
     mounted:function(){
+        var audio = new Audio("file://bell.mp3");
+        audio.play();
     },
     computed:{
 
@@ -88,6 +93,16 @@ var app = new Vue({
         },
         updateExam(index){
             console.log(index);
+        },
+        setDuration(){
+            var duration_text = "";
+            if(this.duration_h>0){
+                duration_text+=this.duration_h + "h ";
+            }
+            if(this.duration_m>0){
+                duration_text+=this.duration_m + "min";
+            }
+            this.exam_duration = duration_text;
         }
     },
 })
