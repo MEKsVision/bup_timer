@@ -19,10 +19,8 @@
         <div class="container">
             <div class="header">
                 <!-- Logo  -->
-                <div>
                     <a href="#" class="logo"><img src="./bup-logo.png" class="img-fluid" alt=""></a>
-                    <h1>Bangladesh University of Professionals</h1>
-                </div>
+                    <!-- <h1>Bangladesh University of Professionals</h1> -->
 
 <!--                 <div class="info-pill">Exam Hall Dashboard</div> -->
                 <!-- Logo -->
@@ -33,7 +31,7 @@
             <!-- Content wrapper -->
             <div class="content-wrapper">
                 <div class="row">
-                    <div class="col-lg-3">
+                    <div class="col-sm-3">
                         <div class="left">
                             <!-- <h1>Bangladesh university <br>of professionals</h1> -->
                             <div class="exams-wrapper">
@@ -51,18 +49,18 @@
                                         </div>
                                         <h5>{{ item.course_title }}</h5>
                                         <ul>
-                                            <li><span>Course Code</span><span>{{ item.course_code }}</span></li>
-                                            <li><span>Time</span><span>{{ item.time }}</span></li>
-                                            <li><span>Total Students</span><span>{{ item.total_student }}</span></li>
-                                            <li><span>Present</span><span>{{ item.present }}</span></li>
-                                            <li><span>Absent</span><span>{{ item.total_student - item.present }}</span></li>
+                                            <li><strong>Course Code</strong><span>{{ item.course_code }}</span></li>
+                                            <li><strong>Time</strong><span>{{ item.time }}</span></li>
+                                            <li><strong>Total Students</strong><span>{{ item.total_student }}</span></li>
+                                            <li><strong>Present</strong><span>{{ item.present }}</span></li>
+                                            <li><strong>Absent</strong><span>{{ item.total_student - item.present }}</span></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-9 position-relative">
+                    <div class="col-sm-9 position-relative">
                         <div class="right">
                             <div class="control-box">
                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -70,7 +68,7 @@
                                   </div>
                             </div>
                             <h4 class="title">{{exam_info.title}}</h4>
-                            <p>Remaining Time:</p>
+                            <!-- <p>Remaining Time:</p> -->
                             <div class="timer-wrapper">
                                 <div class="timer-single">
                                     {{ duration_h }}<span>h</span>
@@ -83,15 +81,13 @@
                                 </div>
                             </div>
                             <a href="#" @click.prevent="setStartedTime()" class="start-btn">{{(timer_interval_object!=null) ? "Stop" : "Start"}}</a>
-                            <div>
                                 <div class="current-time">
                                     <h5>Current Date & Time</h5>
                                     <h3>{{getCurrentTime()}}</h3>
                                 </div>
-                            </div>
                         </div>
                         <div class="footer">
-                            <p>Courtesy of <a href="http://meksvision.com/">mekvision.com</a></p>
+                            <p>Courtesy of <a href="http://meksvision.com/" target="_blank">mekvision.com</a></p>
                         </div>
                     </div>
 

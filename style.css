@@ -1,9 +1,9 @@
         /* Css Variables */
         :root{
-            --primary-color: #00A45D;
+            --primary-color: #1b5e20;
             --primary-light: #E5F6EE;
             --title-color: #01331D;
-            --primary-dark: #008E51;
+            --primary-dark: #003300;
         }
         /* Reset styles */
         *{
@@ -29,12 +29,12 @@
         .timer{
             height: 100vh;
             overflow: hidden;
-            padding-top: 15px;
+            padding-top: 5px;
         }
         .header{
             display:flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
             margin-bottom: 15px;
             background-color: #eee;
             padding: 5px;
@@ -61,7 +61,7 @@
             height: 100px;
             background-color: #eee;
             border-radius: 50%;
-            padding: 20px;
+            /* padding: 20px; */
         }
         /* .timer .content-wrapper h1{
             font-size: 40px;
@@ -157,7 +157,8 @@
             border-top: 1px solid #eee;
             padding: 2px 0;
             font-weight: 500;
-            color: #555;
+            color: #000;
+            font-size: 16px;
         }
         .exams-wrapper .exams .exam-single ul li:last-child{
             padding-bottom: 0;
@@ -176,13 +177,14 @@
             display: flex;
             justify-content: space-between;
             gap: 30px;
+            margin-top: 25px;
         }
         .timer .content-wrapper .right .timer-wrapper .timer-single{
-            font-size: 100px;
+            font-size: 140px;
             font-weight: 700;
             background-color: var(--primary-color);
             flex-grow: 1;
-            padding: 30px 0;
+            padding: 0;
             border-radius: 20px;
             text-align: center;
             color: white;
@@ -205,9 +207,10 @@
             font-weight: 500;
         }
         .timer .content-wrapper .right a.start-btn{
+            float: right;
             display: inline-block;
-            padding: 18px 70px;
-            margin-top: 50px;
+            padding: 5px 20px;
+            margin-top: 40px;
             background-color: #2A72EF;
             color: white;
             font-size: 16px;
@@ -216,15 +219,18 @@
             border-radius: 30px;
             transition: 200ms ease-in-out;
             margin-bottom: 50px;
+            margin-right:60px;
         }
         .timer .content-wrapper .right a.start-btn:hover{
             background-color: #034BC6;
         }
         .timer .content-wrapper .right .current-time{
-            padding: 30px 60px;
+            clear: both;
             display: inline-block;
             border: 2px solid var(--primary-color);
             border-radius: 20px;
+            padding: 10px 20px;
+            margin-top: 40px;
         }
         .timer .content-wrapper .right .current-time h5{
             font-size: 20px;
@@ -246,15 +252,16 @@
         }
         .timer .content-wrapper .footer p{
             margin-bottom: 0;
+            font-size: 11pt;
         }
         @media(max-width: 1400px){
-            .timer{
+            /* .timer{
                 padding-top: 30px;
-            }
-            .timer .logo{
+            } */
+            /* .timer .logo{
                 width: 80px;
                 height: 80px;
-            }
+            } */
             /* .timer .content-wrapper h1{
                 font-size: 30px;
                 line-height: 40px;
@@ -288,28 +295,28 @@
                 font-size: 16px;
                 margin-bottom: 10px;
             }
-            .exams-wrapper .exams .exam-single ul li{
+            /* .exams-wrapper .exams .exam-single ul li{
                 font-size: 13px;
-                padding: 5px 0;
-            }
+                padding: 5px 0; 
+            } */
             .timer .content-wrapper .right .title{
                 font-size: 25px;
                 /* margin-bottom: 20px; */
             }
             .timer .content-wrapper .right .timer-wrapper .timer-single{
-                font-size: 70px;
+                /* font-size: 70px; */
             }
             .timer .content-wrapper .right .timer-wrapper .timer-single span{
                 font-size: 25px;
             }
             .timer .content-wrapper .right a.start-btn{
-                margin-top: 35px;
-                margin-bottom: 35px;
+                /* margin-top: 35px;
+                margin-bottom: 35px; */
                 font-size: 16px;
-                padding: 15px 60px;
+                padding: 5px 20px;
             }
             .timer .content-wrapper .right .current-time{
-                padding: 30px 50px;
+                /* padding: 30px 50px; */
             }
             .timer .content-wrapper .right .current-time h5{
                 font-size: 18px;

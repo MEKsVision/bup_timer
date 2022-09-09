@@ -13,7 +13,7 @@ var app = new Vue({
         interval:1000,
         timer_interval_object:null,
         exam_info:{
-            title:"Enter the exam title here e.g. Final examination 2022",
+            title:"Final Examination 2022",
             exams:[]
         },
         single_exam:{
@@ -91,4 +91,3 @@ var app = new Vue({
         }
     },
 })
-
