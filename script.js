@@ -23,16 +23,19 @@ var app = new Vue({
             time: "",
             total_student: "",
             present:"",
-        }
+        },
+        voice:null,
+        bell:null
     },
     created:function(){
         window.onbeforeunload = function(){
             return "Are you sure to leave timer?";
         }
+        this.voice = new Audio("voice.mp3");
+        this.bell = new Audio("bell.mp3");
     },
     mounted:function(){
-        var audio = new Audio("file://bell.mp3");
-        audio.play();
+
     },
     computed:{
 
@@ -64,6 +67,7 @@ var app = new Vue({
                         this.duration_m = this.duration.minutes()
                         this.duration_h = this.duration.hours()
                     }else{
+                        this.handleAudio();
                         this.stopInterval();
                     }
                 },1000)
@@ -103,6 +107,9 @@ var app = new Vue({
                 duration_text+=this.duration_m + "min";
             }
             this.exam_duration = duration_text;
+        },
+        handleAudio(){
+            this.voice.play();
         }
     },
 })
