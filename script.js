@@ -109,7 +109,29 @@ var app = new Vue({
             this.exam_duration = duration_text;
         },
         handleAudio(){
+            let playTime = 2;
+            let bellPlayTime = 2;
+            let j = 1;
+            let i = 1;
             this.voice.play();
+            this.voice.addEventListener("ended",()=>{
+                if(i < playTime){
+                    setTimeout(()=>{
+                        this.voice.play();
+                        i++;
+                    }, 2000);
+                }else{
+                    //Repeating bell
+                    this.bell.play();
+                    this.bell.addEventListener("ended",()=>{
+                        if(j < bellPlayTime){
+                            this.bell.play();
+                            j++;
+                            console.log(j,bellPlayTime);
+                        }   
+                    });
+                }
+            })
         }
     },
 })
