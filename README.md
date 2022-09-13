@@ -1,4 +1,4 @@
-### BUP Examination hall timer application
+## BUP Examination hall timer application
 ###  Created to use in the examination hall as a timer
 **Features**
 - Examination title showing
