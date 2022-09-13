@@ -127,7 +127,7 @@ var app = new Vue({
                         if(j < bellPlayTime){
                             this.bell.play();
                             j++;
-                            console.log(j,bellPlayTime);
+                            // console.log(j,bellPlayTime);
                         }   
                     });
                 }
